@@ -1,0 +1,55 @@
+name: "arcashla_genotype"
+description: Predict the most likely genotype (no partial alleles), input the FASTQs produced by arcashla/extract or the original FASTQs with all reads (experimental).
+keywords:
+  - HLA
+  - genotype
+  - RNA-seq
+tools:
+  - "arcashla":
+      description: "arcasHLA performs high resolution genotyping for HLA class I and class II genes from RNA sequencing, supporting both paired and single-end samples."
+      homepage: "https://github.com/RabadanLab/arcasHLA"
+      documentation: "https://github.com/RabadanLab/arcasHLA"
+      tool_dev_url: "https://github.com/RabadanLab/arcasHLA"
+      doi: "10.1093/bioinformatics/btz474"
+      licence: "['GPL v3']"
+
+input:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test', single_end:false ]
+  - reads:
+      type: FASTQs produced by arcashla/extract or the original FASTQs with all reads (experimental). If you have previously run genotype on a sample, you can run genotype again directly on the corresponding *.alignment.p file to retype without aligning with Kallisto again.
+      description: BAM/CRAM/SAM file
+      pattern: "*.{fq.gz,alignment.p}"
+
+output:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test', single_end:false ]
+  - alignment:
+      type: file
+      description: Intermediate alignment file from arcashla/genotype execution
+      pattern: "*.alignment.p"
+  - genes:
+      type: file
+      description: JSON file with observed HLA genes, (relative) abundance, read count, and number of classes
+      pattern: "*.json"
+  - genotype:
+      type: file
+      description: JSON file with predicted genotype
+      pattern: "*.json"
+  - log:
+      type: file
+      description: Log file for run summary
+      pattern: "*.log"
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+authors:
+  - "@christopher-mohr"

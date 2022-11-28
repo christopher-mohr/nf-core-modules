@@ -74,6 +74,10 @@ arcashla/extract:
   - modules/nf-core/arcashla/extract/**
   - tests/modules/nf-core/arcashla/extract/**
 
+arcashla/genotype:
+  - modules/nf-core/arcashla/genotype/**
+  - tests/modules/nf-core/arcashla/genotype/**
+
 aria2:
   - modules/nf-core/aria2/**
   - tests/modules/nf-core/aria2/**
@@ -2171,13 +2175,13 @@ pmdtools/filter:
   - modules/nf-core/pmdtools/filter/**
   - tests/modules/nf-core/pmdtools/filter/**
 
-porechop/porechop:
-  - modules/nf-core/porechop/porechop/**
-  - tests/modules/nf-core/porechop/porechop/**
-
 porechop/abi:
   - modules/nf-core/porechop/abi/**
   - tests/modules/nf-core/porechop/abi/**
+
+porechop/porechop:
+  - modules/nf-core/porechop/porechop/**
+  - tests/modules/nf-core/porechop/porechop/**
 
 preseq/ccurve:
   - modules/nf-core/preseq/ccurve/**
