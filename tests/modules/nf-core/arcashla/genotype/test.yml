@@ -5,12 +5,14 @@
     - "arcashla/genotype"
   files:
     - path: output/arcashla/test.alignment.p
-      md5sum: ce48fa53589827141f681ccb16a2a011
+      md5sum: 2011679bb44c5935bb2a419c17fa5d85
     - path: output/arcashla/test.genes.json
-      md5sum: ce48fa53589827141f681ccb16a2a011
+      md5sum: 8ddbd43b04b09e916adf4f27141b5c36
     - path: output/arcashla/test.genotype.json
-      md5sum: ce48fa53589827141f681ccb16a2a011
+      md5sum: c7b41912b5829362ad28d32348ea3977
     - path: output/arcashla/test.log
-      md5sum: ce48fa53589827141f681ccb16a2a011
+      contains:
+        - "[genotype] 297 reads aligned to HLA-C in 97 classes"
     - path: "output/arcashla/versions.yml"
-      md5sum: a01fe51bc4c6a3a6226fbf77b2c7cf3b
+    - path: output/arcashla/temp_files
+

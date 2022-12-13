@@ -4,8 +4,8 @@ process ARCASHLA_GENOTYPE {
 
     conda (params.enable_conda ? "bioconda::arcas-hla=0.5.0" : null)
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://depot.galaxyproject.org/singularity/arcas-hla:0.5.0--hdfd78af_0':
-        'quay.io/biocontainers/arcas-hla:0.5.0--hdfd78af_0' }"
+        'https://depot.galaxyproject.org/singularity/arcas-hla:0.5.0--hdfd78af_1':
+        'quay.io/biocontainers/arcas-hla:0.5.0--hdfd78af_1' }"
 
     input:
     tuple val(meta), path(reads)
@@ -26,7 +26,12 @@ process ARCASHLA_GENOTYPE {
     def single_end  = meta.single_end ? "--single" : ""
     def VERSION = "0.5.0" // WARN: Version information not provided by tool on CLI. Please update this string when bumping container versions.
 
+    //arcasHLA reference --version 3.46.0 -v
+    //arcasHLA reference --rebuild -v
+
     """
+    arcasHLA reference --version 3.34.0 -v
+
     arcasHLA \\
         genotype \\
         $args \\
@@ -35,7 +40,7 @@ process ARCASHLA_GENOTYPE {
         --temp temp_files/ \\
         --log ${prefix}.log \\
         $single_end \\
-        $fastq
+        $reads
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
